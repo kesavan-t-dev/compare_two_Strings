@@ -21,12 +21,13 @@ function checkNumbers() {
         if ((code >= 65 && code <= 90) || (code >= 97 && code <= 122)) {
             hasLetter = true;
         }
-        // Allowed: digits, comma, dot, minus
+        
         else if (
             !(code >= 48 && code <= 57) &&
             ch !== "," &&
             ch !== "." &&
-            ch !== "-"
+            ch !== "-" &&
+            ch !== "+" 
         ) {
             hasSpecial = true;
         }
@@ -84,18 +85,20 @@ function checkNumbers() {
 function isValidNumber(value) {
     let dotCount = 0;
     let minusCount = 0;
+    let plusCount = 0;
 
     for (let i = 0; i < value.length; i++) {
         let ch = value[i];
 
         if (ch === ".") dotCount++;
         if (ch === "-") minusCount++;
+        if (ch === "+") plusCount++;
 
         
         if (ch === "-" && i !== 0) return false;
     }
 
-    return !(dotCount > 1 || minusCount > 1 || value === "-" || value === ".");
+    return !(dotCount > 1 || minusCount > 1 || value === "-" || value === "." || value === "+");
 }
 
 function showError(message) {
