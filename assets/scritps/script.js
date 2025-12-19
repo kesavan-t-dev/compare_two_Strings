@@ -14,7 +14,7 @@ function checkNumbers() {
     let hasLetter = false;
     let hasSpecial = false;
    
-    for (let ch of input) {
+    for (let ch of input) {      
         const code = ch.charCodeAt(0);
 
         if ((code >= 65 && code <= 90) || (code >= 97 && code <= 122)) {
