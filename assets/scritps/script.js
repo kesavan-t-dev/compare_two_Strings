@@ -58,27 +58,21 @@ function check_numbers() {
     }
 
     
-    normalized = normalized.replace(/\s+/g, "");
-
-    const parts = normalized.split(",");
-
-    
+    parts = normalized.replace(/\s+/g, "").split(",");
+   
     if (parts.length !== 2) {
         show_error("Enter only two numbers");
         return;
     }
 
-    const a = parts[0];
-    const b = parts[1];
-
-    if (!isValidNumber(a) || !isValidNumber(b)) {
+    if (!isValidNumber(parts[0]) || !isValidNumber(parts[1])) {
         show_error("Invalid number(s)");
         return;
     }
 
 
-    const num1 = Number(a);
-    const num2 = Number(b);
+    const num1 = Number(parts[0]);
+    const num2 = Number(parts[1]);
 
     if (num1 === num2) {
         show_error("both numbers are same");
