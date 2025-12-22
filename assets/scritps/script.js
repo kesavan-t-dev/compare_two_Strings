@@ -1,4 +1,4 @@
-function checkNumbers() {
+function check_numbers() {
     const inputRaw = document.getElementById("user_input").value;
     const resultMsg = document.getElementById("result_msg");
 
@@ -6,7 +6,7 @@ function checkNumbers() {
     resultMsg.classList.remove("alert-danger", "alert-success");
     
     if (inputRaw.trim().length === 0) {
-        showError("Please enter a number");
+        show_error("Please enter a number");
         return;
     }
     let input = inputRaw.trim();
@@ -31,17 +31,17 @@ function checkNumbers() {
     }
 
     if (hasSpecial) {
-        showError("Special Character(s) not allowed");
+        show_error("Special Character(s) not allowed");
         return;
     }
 
     if (hasLetter) {
-        showError("letter(s) not allowed");
+        show_error("letter(s) not allowed");
         return;
     }
     
     if (input.startsWith(",") || input.endsWith(",")) {
-        showError("Special Character(s) not allowed");
+        show_error("Special Character(s) not allowed");
         return;
     }
     let normalized = "";
@@ -66,7 +66,7 @@ function checkNumbers() {
 
     
     if (parts.length !== 2) {
-        showError("Enter only two numbers");
+        show_error("Enter only two numbers");
         return;
     }
 
@@ -74,7 +74,7 @@ function checkNumbers() {
     const b = parts[1];
 
     if (!isValidNumber(a) || !isValidNumber(b)) {
-        showError("Invalid number(s)");
+        show_error("Invalid number(s)");
         return;
     }
 
@@ -83,7 +83,7 @@ function checkNumbers() {
     const num2 = Number(b);
 
     if (num1 === num2) {
-        showError("both numbers are same");
+        show_error("both numbers are same");
         return;
     }
 
@@ -126,14 +126,14 @@ function isValidNumber(value) {
     return hasDigit;
 }
 
-function showError(message) {
+function show_error(message) {
     const resultMsg = document.getElementById("result_msg");
     resultMsg.innerText = message;
     resultMsg.classList.remove("d-none");
     resultMsg.classList.add("alert-danger");
 }
 
-function resetForm() {
+function reset_form() {
     document.getElementById("user_input").value = "";
     document.getElementById("result_msg").classList.add("d-none");
 }
