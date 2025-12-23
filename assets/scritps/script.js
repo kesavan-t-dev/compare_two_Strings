@@ -63,9 +63,7 @@ function check_numbers() {
     if (parts.length !== 2) {
         show_error("Enter only two numbers");
         return;
-    }
-
-    if (!isValidNumber(parts[0]) || !isValidNumber(parts[1])) {
+    } else if (!is_validNumber(parts[0]) || !is_validNumber(parts[1])) {
         show_error("Invalid number(s)");
         return;
     }
@@ -86,7 +84,7 @@ function check_numbers() {
     resultMsg.classList.add("alert-success");
 }
 
-function isValidNumber(value) {
+function is_validNumber(value) {
     let dotCount = 0;
     let signCount = 0;
     let hasDigit = false;
@@ -94,23 +92,19 @@ function isValidNumber(value) {
     for (let i = 0; i < value.length; i++) {
         const ch = value[i];
 
-        if (ch >= "0" && ch <= "9") {
-            hasDigit = true;
-            continue;
-        }
-
-        if (ch === ".") {
-            dotCount++;
-            if (dotCount > 1) return false;
-            continue;
-        }
-
-        if (ch === "+" || ch === "-") {
-            if (i !== 0) return false;
-            signCount++;
-            if (signCount > 1) return false;
-            continue;
-        }
+    if (ch >= "0" && ch <= "9") {
+        hasDigit = true;
+        continue;
+    } else if (ch === ".") {
+        dotCount++;
+        if (dotCount > 1) return false;
+        continue;
+    } else if (ch === "+" || ch === "-") {
+        if (i !== 0) return false;
+        signCount++;
+        if (signCount > 1) return false;
+        continue;
+    }
 
         return false;
     }
